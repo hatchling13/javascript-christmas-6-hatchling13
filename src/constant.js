@@ -5,13 +5,22 @@ const MESSAGE = {
   INPUT_ORDER:
     '주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)',
 };
-
 Object.freeze(MESSAGE);
 
+const VISIT_DATE = {
+  INVALID_DAY: '[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.',
+};
+Object.freeze(VISIT_DATE);
+
+const ERROR = {
+  VISIT_DATE,
+};
+Object.freeze(ERROR);
+
 const CONSTANT = {
+  ERROR,
   MESSAGE,
 };
-
 Object.freeze(CONSTANT);
 
 export default CONSTANT;

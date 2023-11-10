@@ -1,3 +1,5 @@
+import CONSTANT from './constant.js';
+
 class VisitDate {
   #day;
 
@@ -23,11 +25,11 @@ class VisitDate {
    */
   #validate(parsed) {
     if (parsed < 1 || parsed > 31) {
-      throw new Error('[ERROR]');
+      throw new Error(CONSTANT.ERROR.VISIT_DATE.INVALID_DAY);
     }
 
     if (!Number.isInteger(parsed)) {
-      throw new Error('[ERROR]');
+      throw new Error(CONSTANT.ERROR.VISIT_DATE.INVALID_DAY);
     }
   }
 }
