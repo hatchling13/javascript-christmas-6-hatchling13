@@ -30,9 +30,3 @@
   - [ ] 총혜택 금액 출력
   - [ ] 할인 후 예상 결제 금액 출력
   - [ ] 이벤트 배지 출력
-
-# 기능 요구 사항에 없는 예외 생각하기
-
-## 주문 가능한 최대 메뉴 개수는?
-
-- MDN에 따르면, ['안전한 정숫값'](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER)이라는 개념이 있다. 프로그램에서 사용될 수 있는 최댓값이 `MAX_SAFE_INTEGER`보다 작기를 바라므로, `MAX_SAFE_INTEGER`의 값을 메뉴 중 가장 비싼 레드와인(60,000)의 값으로 나누어 내림한 값을 주문 가능한 최대 메뉴 개수로 정한다.
