@@ -21,6 +21,14 @@ class VisitDate {
    * @param {string} input
    */
   #parse(input) {
+    if (input.includes(' ')) {
+      throw new Error(CONSTANT.ERROR.BLANK_INCLUDED);
+    }
+
+    if (input.includes('.')) {
+      throw new Error(CONSTANT.ERROR.VISIT_DATE.INVALID_DAY);
+    }
+
     return Number.parseInt(input, 10);
   }
 

@@ -13,6 +13,7 @@ const VISIT_DATE = {
 Object.freeze(VISIT_DATE);
 
 const ERROR = {
+  BLANK_INCLUDED: '[ERROR] 입력에 공백이 존재합니다. 다시 입력해 주세요.',
   VISIT_DATE,
 };
 Object.freeze(ERROR);
