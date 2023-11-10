@@ -13,6 +13,10 @@ class VisitDate {
     this.#day = parsed;
   }
 
+  toString() {
+    return `12월 ${this.#day}일`;
+  }
+
   /**
    * @param {string} input
    */
