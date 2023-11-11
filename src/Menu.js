@@ -25,6 +25,16 @@ class Menu {
   }
 
   /**
+   * @param {string} name
+   */
+  getCategoryOfMenu(name) {
+    const entries = Array.from(this.#categories.entries());
+    const category = entries.filter(([_, menus]) => menus.has(name))[0];
+
+    return category;
+  }
+
+  /**
    * @param {'애피타이저' | '메인' | '디저트' | '음료'} categoryName
    * @param {string[]} names
    * @param {number[]} prices

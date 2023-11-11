@@ -28,6 +28,19 @@ class Order {
     return this.#visitDate.toString();
   }
 
+  totalPriceBeforeDiscount() {
+    const entries = Array.from(this.#data.entries());
+    const prices = entries.map(([name, count]) => {
+      const [_, menu] = MENU.getCategoryOfMenu(name);
+      const price = menu.get(name);
+      return price * count;
+    });
+
+    return prices.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
+    }, 0);
+  }
+
   /**
    * @param {string} input
    */
