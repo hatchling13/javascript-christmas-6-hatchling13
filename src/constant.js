@@ -1,5 +1,6 @@
 const NUMBER = {
   MENU_COUNT_MAX: 20,
+  MIMIMUM_PAYMENT_FOR_GIFT: 120_000,
 };
 Object.freeze(NUMBER);
 

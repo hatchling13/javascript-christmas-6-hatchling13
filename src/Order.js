@@ -46,6 +46,17 @@ class Order {
     return this.#sum(prices);
   }
 
+  canGetGift() {
+    if (
+      this.totalPriceBeforeDiscount() >=
+      CONSTANT.NUMBER.MIMIMUM_PAYMENT_FOR_GIFT
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
   /**
    * @param {string} input
    */
