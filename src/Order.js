@@ -28,6 +28,13 @@ class Order {
     return this.#visitDate.toString();
   }
 
+  totalMenuCount() {
+    const entries = Array.from(this.#data.entries());
+    const menuCounts = entries.map(([_, count]) => count);
+
+    return this.#sum(menuCounts);
+  }
+
   totalPriceBeforeDiscount() {
     const entries = Array.from(this.#data.entries());
     const prices = entries.map(([name, count]) => {
@@ -36,9 +43,7 @@ class Order {
       return price * count;
     });
 
-    return prices.reduce((accumulator, currentValue) => {
-      return accumulator + currentValue;
-    }, 0);
+    return this.#sum(prices);
   }
 
   /**
@@ -92,6 +97,25 @@ class Order {
     }
 
     this.#checkMenuDuplicated(names);
+    this.#validateRequirements(names, counts);
+  }
+
+  /**
+   * @param {string[]} names
+   * @param {number[]} counts
+   */
+  #validateRequirements(names, counts) {
+    if (this.#sum(counts) === CONSTANT.NUMBER.MENU_COUNT_MAX) {
+      throw new Error(CONSTANT.ERROR.ORDER.INVALID_MENU_COUNT);
+    }
+
+    const categoriesOfMenus = names.map(
+      name => MENU.getCategoryOfMenu(name)[0],
+    );
+
+    if (categoriesOfMenus.every('음료')) {
+      throw new Error(CONSTANT.ERROR.ORDER.ONLY_DRINKS);
+    }
   }
 
   /**
@@ -142,6 +166,15 @@ class Order {
     });
 
     return map;
+  }
+
+  /**
+   * @param {number[]} items
+   */
+  #sum(items) {
+    return items.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue;
+    }, 0);
   }
 }
 
