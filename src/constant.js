@@ -36,16 +36,9 @@ const VISIT_DATE = {
 };
 Object.freeze(VISIT_DATE);
 
-const ORDER = {
-  INVALID_MENU_COUNT: `[ERROR] 메뉴는 한 번에 최대 ${NUMBER.MENU_COUNT_MAX}개까지만 주문할 수 있습니다.`,
-  ONLY_DRINKS: '[ERROR] 음료만 주문할 수 없습니다.',
-};
-Object.freeze(ORDER);
-
 const ERROR = {
   BLANK_INCLUDED: '[ERROR] 입력에 공백이 존재합니다. 다시 입력해 주세요.',
   INVALID_ORDER: '[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.',
-  ORDER,
   VISIT_DATE,
 };
 Object.freeze(ERROR);

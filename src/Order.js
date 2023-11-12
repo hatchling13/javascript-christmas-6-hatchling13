@@ -105,16 +105,16 @@ class Order {
    * @param {number[]} counts
    */
   #validateRequirements(names, counts) {
-    if (this.#sum(counts) === CONSTANT.NUMBER.MENU_COUNT_MAX) {
-      throw new Error(CONSTANT.ERROR.ORDER.INVALID_MENU_COUNT);
+    if (this.#sum(counts) > CONSTANT.NUMBER.MENU_COUNT_MAX) {
+      throw new Error(CONSTANT.ERROR.INVALID_ORDER);
     }
 
     const categoriesOfMenus = names.map(
       name => MENU.getCategoryOfMenu(name)[0],
     );
 
-    if (categoriesOfMenus.every('음료')) {
-      throw new Error(CONSTANT.ERROR.ORDER.ONLY_DRINKS);
+    if (categoriesOfMenus.every(category => category === '음료')) {
+      throw new Error(CONSTANT.ERROR.INVALID_ORDER);
     }
   }
 
