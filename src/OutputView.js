@@ -18,14 +18,14 @@ const OutputView = {
 
     this.printMenu(order);
     this.printTotalPriceBeforeDiscount(order);
+    this.printPromotionGift(order);
   },
   /**
    * @param {Order} order
    */
   printMenu(order) {
     Console.print('<주문 메뉴>');
-    Console.print(order.toString());
-    Console.print('');
+    Console.print(`${order.toString()}\n`);
   },
   /**
    * @param {Order} order
@@ -36,6 +36,16 @@ const OutputView = {
     const priceText = order.totalPriceBeforeDiscount().toLocaleString('ko-KR');
 
     Console.print(`${priceText}원\n`);
+  },
+  /**
+   * @param {Order} order
+   */
+  printPromotionGift(order) {
+    Console.print('<증정 메뉴>');
+
+    const gift = order.canGetGift() ? '샴페인 1개' : '없음';
+
+    Console.print(`${gift}\n`);
   },
 };
 
