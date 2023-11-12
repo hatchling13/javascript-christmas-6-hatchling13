@@ -1,19 +1,30 @@
 import { Console } from '@woowacourse/mission-utils';
 
-import CONSTANT from './constant';
+import Order from './Order.js';
+
+import CONSTANT from './constant.js';
 
 const OutputView = {
   printGreeting() {
     Console.print(CONSTANT.MESSAGE.GREETING);
   },
   /**
-   * @param {string} date
+   * @param {Order} order
    */
-  printBenefits(date) {
-    Console.print(`${date}에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n`);
+  printBenefits(order) {
+    Console.print(
+      `${order.getVisitDate()}에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n`,
+    );
+
+    this.printMenu(order);
   },
-  printMenu() {
+  /**
+   * @param {Order} order
+   */
+  printMenu(order) {
     Console.print('<주문 메뉴>');
+    Console.print(order.toString());
+    Console.print('');
   },
 };
 
