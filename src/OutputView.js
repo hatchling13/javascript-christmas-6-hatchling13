@@ -17,6 +17,7 @@ const OutputView = {
     );
 
     this.printMenu(order);
+    this.printTotalPriceBeforeDiscount(order);
   },
   /**
    * @param {Order} order
@@ -25,6 +26,16 @@ const OutputView = {
     Console.print('<주문 메뉴>');
     Console.print(order.toString());
     Console.print('');
+  },
+  /**
+   * @param {Order} order
+   */
+  printTotalPriceBeforeDiscount(order) {
+    Console.print('<할인 전 총주문 금액>');
+
+    const priceText = order.totalPriceBeforeDiscount().toLocaleString('ko-KR');
+
+    Console.print(`${priceText}원\n`);
   },
 };
 
