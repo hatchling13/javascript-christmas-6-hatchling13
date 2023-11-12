@@ -24,6 +24,18 @@ describe('주문 클래스 테스트', () => {
     }).toThrow('[ERROR]');
   });
 
+  test('메뉴 개수의 합계가 20개보다 많을 경우 예외가 발생한다.', () => {
+    expect(() => {
+      new Order('해산물파스타-20,레드와인-1', date);
+    }).toThrow('[ERROR]');
+  });
+
+  test('음료만 주문할 경우 예외가 발생한다.', () => {
+    expect(() => {
+      new Order('제로콜라-1', date);
+    }).toThrow('[ERROR]');
+  });
+
   test('할인 전 총주문 금액 계산 정상 동작', () => {
     const order = new Order('해산물파스타-2,레드와인-1,초코케이크-1', date);
 
