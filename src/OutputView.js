@@ -23,6 +23,7 @@ const OutputView = {
     this.printDiscounts(order);
     this.printTotalDiscountPrice(order);
     this.printExpectedPayment(order);
+    this.printPromotionBadge(order);
   },
   /**
    * @param {Order} order
@@ -104,6 +105,22 @@ const OutputView = {
     Console.print(
       `${this.convertNumberToKRLocale(order.expectedPayment())}원\n`,
     );
+  },
+  /**
+   * @param {Order} order
+   */
+  printPromotionBadge(order) {
+    Console.print('<12월 이벤트 배지>');
+
+    if (order.totalDiscountPrice() >= 20_000) {
+      Console.print('산타');
+    } else if (order.totalDiscountPrice() >= 10_000) {
+      Console.print('트리');
+    } else if (order.totalDiscountPrice() >= 5_000) {
+      Console.print('별');
+    } else {
+      Console.print('없음');
+    }
   },
   /**
    * @param {number} num
