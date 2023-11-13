@@ -73,7 +73,7 @@ class Order {
 
     if (!this.#visitDate.isWeekend2023()) {
       const desserts = menus.filter(
-        ([name, _]) => MENU.getCategoryOfMenu(name) === '디저트',
+        ([name, _]) => MENU.getCategoryOfMenu(name)[0] === '디저트',
       );
 
       const dessertsCount = desserts.map(([_, count]) => count);
@@ -89,7 +89,7 @@ class Order {
 
     if (this.#visitDate.isWeekend2023()) {
       const mains = menus.filter(
-        ([name, _]) => MENU.getCategoryOfMenu(name) === '메인',
+        ([name, _]) => MENU.getCategoryOfMenu(name)[0] === '메인',
       );
 
       const mainsCount = mains.map(([_, count]) => count);
@@ -106,6 +106,20 @@ class Order {
     }
 
     return 0;
+  }
+
+  getAllDiscounts() {
+    const champagne = '샴페인';
+    const champagnePrice = MENU.getCategoryOfMenu(champagne)[1].get(champagne);
+    const giftPrice = this.canGetGift() ? champagnePrice : 0;
+
+    return [
+      this.dDayDiscount(),
+      this.weekdayDiscount(),
+      this.weekendDiscount(),
+      this.specialDiscount(),
+      giftPrice,
+    ];
   }
 
   /**

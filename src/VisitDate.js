@@ -34,7 +34,7 @@ class VisitDate {
   isStarred() {
     const remainder = this.#day % 7;
 
-    if (remainder === 7 || this.#day === 25) {
+    if (remainder === 3 || this.#day === 25) {
       return true;
     }
 
