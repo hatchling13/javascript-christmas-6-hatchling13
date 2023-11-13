@@ -57,6 +57,17 @@ class Order {
     return false;
   }
 
+  dDayDiscount() {
+    if (this.#visitDate.getDay() <= 25) {
+      const start = 1_000;
+      const additional = (this.#visitDate.getDay() - 1) * 100;
+
+      return start + additional;
+    }
+
+    return 0;
+  }
+
   weekdayDiscount() {
     const menus = Array.from(this.#data.entries());
 
