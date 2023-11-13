@@ -21,6 +21,7 @@ const OutputView = {
     this.printTotalPriceBeforeDiscount(order);
     this.printPromotionGift(order);
     this.printDiscounts(order);
+    this.printTotalDiscountPrice(order);
   },
   /**
    * @param {Order} order
@@ -89,6 +90,16 @@ const OutputView = {
       const priceText = champagnePrice.toLocaleString('ko-KR');
       Console.print(`증정 이벤트: -${priceText}원\n`);
     }
+  },
+  /**
+   * @param {Order} order
+   */
+  printTotalDiscountPrice(order) {
+    Console.print('<총혜택 금액>');
+
+    const priceText = order.totalDiscountPrice().toLocaleString('ko-KR');
+
+    Console.print(`-${priceText}원\n`);
   },
 };
 
