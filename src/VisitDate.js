@@ -27,6 +27,16 @@ class VisitDate {
     return false;
   }
 
+  isStarred() {
+    const remainder = this.#day % 7;
+
+    if (remainder === 7 || this.#day === 25) {
+      return true;
+    }
+
+    return false;
+  }
+
   /**
    * @param {string} input
    */

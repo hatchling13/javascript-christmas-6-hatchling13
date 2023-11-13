@@ -89,6 +89,14 @@ class Order {
     return 0;
   }
 
+  specialDiscount() {
+    if (this.#visitDate.isStarred()) {
+      return 1_000;
+    }
+
+    return 0;
+  }
+
   /**
    * @param {string} input
    */
