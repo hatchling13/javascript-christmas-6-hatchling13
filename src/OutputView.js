@@ -36,10 +36,9 @@ const OutputView = {
    */
   printTotalPriceBeforeDiscount(order) {
     Console.print('<할인 전 총주문 금액>');
-
-    const priceText = order.totalPriceBeforeDiscount().toLocaleString('ko-KR');
-
-    Console.print(`${priceText}원\n`);
+    Console.print(
+      `${this.convertNumberToKRLocale(order.totalDiscountPrice())}원\n`,
+    );
   },
   /**
    * @param {Order} order
@@ -75,8 +74,7 @@ const OutputView = {
    */
   printDiscount(discount, reason) {
     if (discount !== 0) {
-      const discountText = discount.toLocaleString('ko-KR');
-      Console.print(`${reason}: -${discountText}원`);
+      Console.print(`${reason}: -${this.convertNumberToKRLocale(discount)}원`);
     }
   },
   /**
@@ -84,8 +82,9 @@ const OutputView = {
    */
   printGift(order) {
     if (order.canGetGift()) {
-      const priceText = order.giftPrice().toLocaleString('ko-KR');
-      Console.print(`증정 이벤트: -${priceText}원\n`);
+      Console.print(
+        `증정 이벤트: -${this.convertNumberToKRLocale(order.giftPrice())}원\n`,
+      );
     }
   },
   /**
@@ -93,20 +92,24 @@ const OutputView = {
    */
   printTotalDiscountPrice(order) {
     Console.print('<총혜택 금액>');
-
-    const priceText = order.totalDiscountPrice().toLocaleString('ko-KR');
-
-    Console.print(`-${priceText}원\n`);
+    Console.print(
+      `-${this.convertNumberToKRLocale(order.totalDiscountPrice())}원\n`,
+    );
   },
   /**
    * @param {Order} order
    */
   printExpectedPayment(order) {
     Console.print('<할인 후 예상 결제 금액>');
-
-    const priceText = order.expectedPayment().toLocaleString('ko-KR');
-
-    Console.print(`${priceText}원\n`);
+    Console.print(
+      `${this.convertNumberToKRLocale(order.expectedPayment())}원\n`,
+    );
+  },
+  /**
+   * @param {number} num
+   */
+  convertNumberToKRLocale(num) {
+    return num.toLocaleString('ko-KR');
   },
 };
 
