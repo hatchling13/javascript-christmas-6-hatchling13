@@ -57,6 +57,22 @@ class Order {
     return false;
   }
 
+  weekdayDiscount() {
+    const menus = Array.from(this.#data.entries());
+
+    if (!this.#visitDate.isWeekend2023()) {
+      const desserts = menus.filter(
+        ([name, _]) => MENU.getCategoryOfMenu(name) === '디저트',
+      );
+
+      const dessertsCount = menus.map(([_, count]) => count);
+
+      return this.#sum(dessertsCount) * CONSTANT.NUMBER.WEEKLY_DISCOUNT_BASE;
+    }
+
+    return 0;
+  }
+
   /**
    * @param {string} input
    */

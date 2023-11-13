@@ -17,6 +17,16 @@ class VisitDate {
     return `12월 ${this.#day}일`;
   }
 
+  isWeekend2023() {
+    const remainder = this.#day % 7;
+
+    if (remainder === 1 || remainder === 2) {
+      return true;
+    }
+
+    return false;
+  }
+
   /**
    * @param {string} input
    */
