@@ -24,4 +24,30 @@ describe('방문 날짜 클래스 테스트', () => {
       }).toThrow('[ERROR]');
     },
   );
+
+  test.each([
+    ['1'],
+    ['2'],
+    ['8'],
+    ['9'],
+    ['15'],
+    ['16'],
+    ['22'],
+    ['23'],
+    ['29'],
+    ['30'],
+  ])('주말 여부 확인 함수 테스트', input => {
+    const date = new VisitDate(input);
+
+    expect(date.isWeekend2023()).toBe(true);
+  });
+
+  test.each([['3'], ['10'], ['17'], ['24'], ['25'], ['31']])(
+    '별 여부 확인 함수 테스트',
+    input => {
+      const date = new VisitDate(input);
+
+      expect(date.isStarred()).toBe(true);
+    },
+  );
 });
