@@ -65,9 +65,25 @@ class Order {
         ([name, _]) => MENU.getCategoryOfMenu(name) === '디저트',
       );
 
-      const dessertsCount = menus.map(([_, count]) => count);
+      const dessertsCount = desserts.map(([_, count]) => count);
 
       return this.#sum(dessertsCount) * CONSTANT.NUMBER.WEEKLY_DISCOUNT_BASE;
+    }
+
+    return 0;
+  }
+
+  weekendDiscount() {
+    const menus = Array.from(this.#data.entries());
+
+    if (this.#visitDate.isWeekend2023()) {
+      const mains = menus.filter(
+        ([name, _]) => MENU.getCategoryOfMenu(name) === '메인',
+      );
+
+      const mainsCount = mains.map(([_, count]) => count);
+
+      return this.#sum(mainsCount) * CONSTANT.NUMBER.WEEKLY_DISCOUNT_BASE;
     }
 
     return 0;
