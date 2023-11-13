@@ -114,8 +114,14 @@ class Order {
       this.weekdayDiscount(),
       this.weekendDiscount(),
       this.specialDiscount(),
-      this.#giftPrice(),
+      this.giftPrice(),
     ];
+  }
+
+  giftPrice() {
+    const champagne = '샴페인';
+    const champagnePrice = MENU.getCategoryOfMenu(champagne)[1].get(champagne);
+    return this.canGetGift() ? champagnePrice : 0;
   }
 
   totalDiscountPrice() {
@@ -128,7 +134,7 @@ class Order {
     let payment = this.totalPriceBeforeDiscount() - this.totalDiscountPrice();
 
     if (this.canGetGift()) {
-      payment += this.#giftPrice();
+      payment += this.giftPrice();
     }
 
     return payment;
@@ -263,12 +269,6 @@ class Order {
     return items.reduce((accumulator, currentValue) => {
       return accumulator + currentValue;
     }, 0);
-  }
-
-  #giftPrice() {
-    const champagne = '샴페인';
-    const champagnePrice = MENU.getCategoryOfMenu(champagne)[1].get(champagne);
-    return this.canGetGift() ? champagnePrice : 0;
   }
 }
 

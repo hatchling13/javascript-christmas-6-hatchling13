@@ -22,6 +22,7 @@ const OutputView = {
     this.printPromotionGift(order);
     this.printDiscounts(order);
     this.printTotalDiscountPrice(order);
+    this.printExpectedPayment(order);
   },
   /**
    * @param {Order} order
@@ -83,11 +84,7 @@ const OutputView = {
    */
   printGift(order) {
     if (order.canGetGift()) {
-      const champagne = '샴페인';
-      const champagnePrice =
-        MENU.getCategoryOfMenu(champagne)[1].get(champagne);
-
-      const priceText = champagnePrice.toLocaleString('ko-KR');
+      const priceText = order.giftPrice().toLocaleString('ko-KR');
       Console.print(`증정 이벤트: -${priceText}원\n`);
     }
   },
@@ -100,6 +97,16 @@ const OutputView = {
     const priceText = order.totalDiscountPrice().toLocaleString('ko-KR');
 
     Console.print(`-${priceText}원\n`);
+  },
+  /**
+   * @param {Order} order
+   */
+  printExpectedPayment(order) {
+    Console.print('<할인 후 예상 결제 금액>');
+
+    const priceText = order.expectedPayment().toLocaleString('ko-KR');
+
+    Console.print(`${priceText}원\n`);
   },
 };
 
