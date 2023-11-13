@@ -122,6 +122,12 @@ class Order {
     ];
   }
 
+  totalDiscountPrice() {
+    const discounts = this.getAllDiscounts();
+
+    return this.#sum(discounts);
+  }
+
   /**
    * @param {string} input
    */
